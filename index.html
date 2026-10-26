@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Responsive Single-Page E-Commerce Front Page (Amazon.in style) - Web Technology Practical 1">
+  <meta name="author" content="Student">
+  <title>Online Shopping site in India: Shop Online for Mobiles, Books, Watches, Shoes and More - Amazon.in</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="images/amazon-logo.svg">
+
+  <!-- Local Bootstrap 5 CSS (100% Offline Compatible) -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+
+  <!-- Local Bootstrap Icons CSS (100% Offline Compatible) -->
+  <link rel="stylesheet" href="css/bootstrap-icons.min.css">
+
+  <!-- Custom CSS (Flexbox, CSS Grid & Media Queries) -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body spellcheck="false">
+
+  <!-- ======================================================================
+       1. SEMANTIC HEADER: Top Navigation & Sub-Navigation Bar
+       ====================================================================== -->
+  <header class="amz-header" id="topHeader">
+    <!-- Top Main Navbar -->
+    <nav class="amz-navbar-top" aria-label="Main Navigation">
+      <!-- Amazon Logo -->
+      <a href="index.html" class="amz-nav-box amz-logo-box" aria-label="Amazon India Home">
+        <img src="images/amazon-logo.svg" alt="Amazon.in Logo" class="amz-logo">
+      </a>
+
+      <!-- Deliver To Location Block -->
+      <div class="amz-nav-box amz-location-box" id="navLocationBox" title="Click to update delivery location">
+        <i class="bi bi-geo-alt amz-location-icon"></i>
+        <div>
+          <div class="amz-loc-line-1">Deliver to</div>
+          <div class="amz-loc-line-2" id="userPincodeDisplay">Pune 412105</div>
+        </div>
+      </div>
+
+      <!-- Main Search Bar (Flexbox) -->
+      <form class="amz-search-container" role="search" onsubmit="event.preventDefault();">
+        <select class="amz-search-category" id="amzSearchCategory" aria-label="Select search category">
+          <option value="all">All</option>
+          <option value="electronics">Electronics</option>
+          <option value="fashion">Fashion &amp; Beauty</option>
+          <option value="home">Home &amp; Kitchen</option>
+          <option value="books">Books</option>
+          <option value="appliances">Appliances</option>
+        </select>
+        <input type="text" class="amz-search-input" id="amzSearchInput" placeholder="Search Amazon.in" aria-label="Search Amazon.in">
+        <button type="submit" class="amz-search-btn" id="amzSearchBtn" aria-label="Submit search">
+          <i class="bi bi-search"></i>
+        </button>
+      </form>
+
+      <!-- Language Selector -->
+      <div class="amz-nav-box d-none d-md-flex flex-row align-items-center gap-1">
+        <span class="fs-6">🇮🇳</span>
+        <span class="fw-bold small text-white">EN</span>
+        <i class="bi bi-caret-down-fill" style="font-size: 0.65rem; color: #a7acb2;"></i>
+      </div>
+
+      <!-- Account & Lists Dropdown Trigger -->
+      <div class="amz-nav-box amz-account-box" data-bs-toggle="modal" data-bs-target="#accountModal">
+        <div class="line-1">Hello, Ayush</div>
+        <div class="line-2">Account &amp; Lists <i class="bi bi-caret-down-fill" style="font-size: 0.65rem; color: #a7acb2;"></i></div>
+      </div>
+
+      <!-- Returns & Orders -->
+      <a href="#orders" class="amz-nav-box amz-orders-box text-white" onclick="event.preventDefault(); alert('Redirecting to past orders...');">
+        <div class="line-1">Returns</div>
+        <div class="line-2">&amp; Orders</div>
+      </a>
+
+      <!-- Shopping Cart with Live Counter (Triggers Offcanvas Drawer) -->
+      <a href="#cartOffcanvas" class="amz-nav-box amz-cart-box" data-bs-toggle="offcanvas" role="button" aria-controls="cartOffcanvas" aria-label="Shopping Cart">
+        <div class="amz-cart-icon-wrapper">
+          <i class="bi bi-cart3"></i>
+          <span class="amz-cart-count" id="cartCountBadge">2</span>
+        </div>
+        <span class="amz-cart-label d-none d-sm-inline">Cart</span>
+      </a>
+    </nav>
+
+    <!-- Sub-Navigation Bar -->
+    <nav class="amz-subnav" aria-label="Quick Category Links">
+      <ul class="amz-subnav-links">
+        <li>
+          <a class="amz-subnav-link" data-bs-toggle="offcanvas" href="#allMenuOffcanvas" role="button">
+            <i class="bi bi-list fs-5"></i>
+            <span class="fw-bold">All</span>
+          </a>
+        </li>
+        <li><a href="#featuredProductsSection" class="amz-subnav-link">Amazon miniTV</a></li>
+        <li><a href="#todaysDealsSection" class="amz-subnav-link">Sell</a></li>
+        <li><a href="#featuredProductsSection" class="amz-subnav-link">Best Sellers</a></li>
+        <li><a href="#featuredProductsSection" class="amz-subnav-link">Mobiles</a></li>
+        <li><a href="#todaysDealsSection" class="amz-subnav-link">Today's Deals</a></li>
+        <li><a href="#featuredProductsSection" class="amz-subnav-link">Electronics</a></li>
+        <li><a href="#primeModal" data-bs-toggle="modal" class="amz-subnav-link">Prime <i class="bi bi-caret-down-fill" style="font-size: 0.6rem;"></i></a></li>
+        <li><a href="#featuredProductsSection" class="amz-subnav-link">Customer Service</a></li>
+        <li><a href="#featuredProductsSection" class="amz-subnav-link d-none d-lg-inline-block">Home &amp; Kitchen</a></li>
+        <li><a href="#featuredProductsSection" class="amz-subnav-link d-none d-xl-inline-block">New Releases</a></li>
+        <li><a href="#featuredProductsSection" class="amz-subnav-link d-none d-xl-inline-block">Amazon Pay</a></li>
+      </ul>
+      <div class="amz-subnav-promo d-none d-md-block">
+        <i class="bi bi-stars"></i> Great Indian Festival | Mega Deals Live
+      </div>
+    </nav>
+  </header>
+
+  <!-- ======================================================================
+       2. MAIN CONTENT
+       ====================================================================== -->
+  <main>
+
+    <!-- ------------------------------------------------------------------
+         HERO CAROUSEL SECTION (Bootstrap 5 Carousel with Overlay)
+         ------------------------------------------------------------------ -->
+    <section class="amz-hero-carousel-wrapper" aria-label="Promotional Carousel">
+      <div id="amzHeroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4500">
+        <!-- Carousel Indicators -->
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#amzHeroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#amzHeroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#amzHeroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+
+        <!-- Carousel Slides -->
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="images/banner-1.svg" class="d-block w-100" alt="Great Indian Festival Mega Electronics Sale">
+          </div>
+          <div class="carousel-item">
+            <img src="images/banner-2.svg" class="d-block w-100" alt="Refresh your living space with up to 65% off appliances">
+          </div>
+          <div class="carousel-item">
+            <img src="images/banner-3.svg" class="d-block w-100" alt="Autumn and Winter wardrobe deals 50% to 80% off">
+          </div>
+        </div>
+
+        <!-- Carousel Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#amzHeroCarousel" data-bs-slide="prev" aria-label="Previous Slide">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#amzHeroCarousel" data-bs-slide="next" aria-label="Next Slide">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+
+        <!-- Amazon Gradient Masking to blend seamlessly into background -->
+        <div class="amz-hero-gradient-overlay"></div>
+      </div>
+    </section>
+
+    <!-- ------------------------------------------------------------------
+         CATEGORY 4-GRID SECTION (Overlaps the Hero Banner)
+         ------------------------------------------------------------------ -->
+    <section class="amz-category-grid-section" aria-label="Featured Categories">
+      <div class="row g-3">
+
+        <!-- Card 1: Home & Decor -->
+        <div class="col-12 col-sm-6 col-lg-3">
+          <article class="amz-card">
+            <div>
+              <h2 class="amz-card-title">Revamp your home in style</h2>
+              <div class="amz-card-2x2-grid">
+                <a href="#featuredProductsSection" class="amz-card-tile">
+                  <div class="amz-tile-img-wrapper"><img src="images/cat-cushion.svg" alt="Cushion covers"></div>
+                  <span class="amz-tile-label">Cushion covers &amp; bedsheets</span>
+                </a>
+                <a href="#featuredProductsSection" class="amz-card-tile">
+                  <div class="amz-tile-img-wrapper"><img src="images/cat-storage.svg" alt="Storage boxes"></div>
+                  <span class="amz-tile-label">Storage boxes &amp; baskets</span>
+                </a>
+                <a href="#featuredProductsSection" class="amz-card-tile">
+                  <div class="amz-tile-img-wrapper"><img src="images/cat-plants.svg" alt="Live plants"></div>
+                  <span class="amz-tile-label">Indoor live plants</span>
+                </a>
+                <a href="#featuredProductsSection" class="amz-card-tile">
+                  <div class="amz-tile-img-wrapper"><img src="images/cat-lighting.svg" alt="Home lamps"></div>
+                  <span class="amz-tile-label">Lamps &amp; lighting</span>
+                </a>
+              </div>
+            </div>
+            <a href="#featuredProductsSection" class="amz-card-footer-link">Explore all home decor →</a>
+          </article>
+        </div>
+
+        <!-- Card 2: Electronics & Accessories -->
+        <div class="col-12 col-sm-6 col-lg-3">
+          <article class="amz-card">
+            <div>
+              <h2 class="amz-card-title">Up to 70% off | Electronics</h2>
+              <div class="amz-card-2x2-grid">
+                <a href="#featuredProductsSection" class="amz-card-tile">
+                  <div class="amz-tile-img-wrapper"><img src="images/cat-headphones.svg" alt="Headphones"></div>
+                  <span class="amz-tile-label">Headphones &amp; earbuds</span>
+                </a>
+                <a href="#featuredProductsSection" class="amz-card-tile">
+                  <div class="amz-tile-img-wrapper"><img src="images/cat-watch.svg" alt="Smartwatches"></div>
+                  <span class="amz-tile-label">Smartwatches</span>
+                </a>
+                <a href="#featuredProductsSection" class="amz-card-tile">
+                  <div class="amz-tile-img-wrapper"><img src="images/cat-tablet.svg" alt="Tablets"></div>
+                  <span class="amz-tile-label">Tablets &amp; e-readers</span>
+                </a>
+                <a href="#featuredProductsSection" class="amz-card-tile">
+                  <div class="amz-tile-img-wrapper"><img src="images/cat-powerbank.svg" alt="Power banks"></div>
+                  <span class="amz-tile-label">Power banks &amp; cables</span>
+                </a>
+              </div>
+            </div>
+            <a href="#featuredProductsSection" class="amz-card-footer-link">See all electronics deals →</a>
+          </article>
+        </div>
+
+        <!-- Card 3: Home Appliances -->
+        <div class="col-12 col-sm-6 col-lg-3">
+          <article class="amz-card">
+            <div>
+              <h2 class="amz-card-title">Appliances for your home</h2>
+              <div class="amz-card-2x2-grid">
+                <a href="#featuredProductsSection" class="amz-card-tile">
+                  <div class="amz-tile-img-wrapper"><img src="images/cat-ac.svg" alt="Air Conditioners"></div>
+                  <span class="amz-tile-label">Split Air Conditioners</span>
+                </a>
+                <a href="#featuredProductsSection" class="amz-card-tile">
+                  <div class="amz-tile-img-wrapper"><img src="images/cat-fridge.svg" alt="Refrigerators"></div>
+                  <span class="amz-tile-label">Double Door Fridges</span>
+                </a>
+                <a href="#featuredProductsSection" class="amz-card-tile">
+                  <div class="amz-tile-img-wrapper"><img src="images/cat-microwave.svg" alt="Microwaves"></div>
+                  <span class="amz-tile-label">Microwaves &amp; ovens</span>
+                </a>
+                <a href="#featuredProductsSection" class="amz-card-tile">
+                  <div class="amz-tile-img-wrapper"><img src="images/cat-washing.svg" alt="Washing machines"></div>
+                  <span class="amz-tile-label">Automatic Washers</span>
+                </a>
+              </div>
+            </div>
+            <a href="#featuredProductsSection" class="amz-card-footer-link">Shop all appliances →</a>
+          </article>
+        </div>
+
+        <!-- Card 4: Smartphones & Accessories -->
+        <div class="col-12 col-sm-6 col-lg-3">
+          <article class="amz-card">
+            <div>
+              <h2 class="amz-card-title">Top smartphone deals</h2>
+              <div class="amz-card-2x2-grid">
+                <a href="#featuredProductsSection" class="amz-card-tile">
+                  <div class="amz-tile-img-wrapper"><img src="images/cat-phone5g.svg" alt="5G Phones"></div>
+                  <span class="amz-tile-label">5G Smartphones</span>
+                </a>
+                <a href="#featuredProductsSection" class="amz-card-tile">
+                  <div class="amz-tile-img-wrapper"><img src="images/cat-phonebudget.svg" alt="Budget Phones"></div>
+                  <span class="amz-tile-label">Under ₹10,000</span>
+                </a>
+                <a href="#featuredProductsSection" class="amz-card-tile">
+                  <div class="amz-tile-img-wrapper"><img src="images/cat-phoneflagship.svg" alt="Flagship Phones"></div>
+                  <span class="amz-tile-label">Flagship Devices</span>
+                </a>
+                <a href="#featuredProductsSection" class="amz-card-tile">
+                  <div class="amz-tile-img-wrapper"><img src="images/cat-phoneacc.svg" alt="Phone Cases"></div>
+                  <span class="amz-tile-label">Cases &amp; Protectors</span>
+                </a>
+              </div>
+            </div>
+            <a href="#featuredProductsSection" class="amz-card-footer-link">Discover latest mobiles →</a>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ------------------------------------------------------------------
+         TODAY'S DEALS / FLASH SALE SECTION (Horizontal Scroll)
+         ------------------------------------------------------------------ -->
+    <section class="amz-section-container" id="todaysDealsSection" aria-label="Today's Deals">
+      <div class="amz-white-panel">
+        <div class="amz-panel-header">
+          <div class="amz-panel-title-group">
+            <h3 class="amz-panel-title mb-0">Today's Deals</h3>
+            <span class="amz-countdown-badge">
+              <i class="bi bi-clock-history"></i> <span id="countdownTimer">14h 42m 19s</span>
+            </span>
+          </div>
+          <a href="#featuredProductsSection" class="amz-card-footer-link">See all deals</a>
+        </div>
+
+        <!-- Deals Horizontal Carousel (Flexbox Scroll) -->
+        <div class="amz-deals-scroll">
+          
+          <div class="amz-deal-card">
+            <div class="amz-deal-img-box">
+              <img src="images/prod-watch6.svg" alt="Samsung Galaxy Watch 6">
+            </div>
+            <div class="amz-deal-badge-row">
+              <span class="amz-discount-pill">41% off</span>
+              <span class="amz-deal-type">Deal of the Day</span>
+            </div>
+            <div class="amz-deal-price">
+              ₹19,999 <span class="amz-deal-mrp">₹33,999</span>
+            </div>
+            <div class="amz-deal-title">Samsung Galaxy Watch 6 Bluetooth 44mm Graphite</div>
+          </div>
+
+          <div class="amz-deal-card">
+            <div class="amz-deal-img-box">
+              <img src="images/prod-shoes.svg" alt="Nike Air Zoom Pegasus">
+            </div>
+            <div class="amz-deal-badge-row">
+              <span class="amz-discount-pill">29% off</span>
+              <span class="amz-deal-type">Limited Time Deal</span>
+            </div>
+            <div class="amz-deal-price">
+              ₹8,495 <span class="amz-deal-mrp">₹11,895</span>
+            </div>
+            <div class="amz-deal-title">Nike Men's Air Zoom Pegasus 40 High-Performance Shoes</div>
+          </div>
+
+          <div class="amz-deal-card">
+            <div class="amz-deal-img-box">
+              <img src="images/prod-airfryer.svg" alt="Digital Air Fryer">
+            </div>
+            <div class="amz-deal-badge-row">
+              <span class="amz-discount-pill">43% off</span>
+              <span class="amz-deal-type">Deal of the Day</span>
+            </div>
+            <div class="amz-deal-price">
+              ₹7,999 <span class="amz-deal-mrp">₹13,999</span>
+            </div>
+            <div class="amz-deal-title">Instant Vortex 6-in-1 Digital Air Fryer with EvenCrisp</div>
+          </div>
+
+          <div class="amz-deal-card">
+            <div class="amz-deal-img-box">
+              <img src="images/prod-tv.svg" alt="Samsung 55 Inch TV">
+            </div>
+            <div class="amz-deal-badge-row">
+              <span class="amz-discount-pill">38% off</span>
+              <span class="amz-deal-type">Mega Savings</span>
+            </div>
+            <div class="amz-deal-price">
+              ₹42,990 <span class="amz-deal-mrp">₹68,900</span>
+            </div>
+            <div class="amz-deal-title">Samsung 138 cm (55 inches) Crystal 4K Vivid Pro Smart TV</div>
+          </div>
+
+          <div class="amz-deal-card">
+            <div class="amz-deal-img-box">
+              <img src="images/prod-backpack.svg" alt="Anti-theft Backpack">
+            </div>
+            <div class="amz-deal-badge-row">
+              <span class="amz-discount-pill">50% off</span>
+              <span class="amz-deal-type">Deal of the Day</span>
+            </div>
+            <div class="amz-deal-price">
+              ₹2,499 <span class="amz-deal-mrp">₹4,999</span>
+            </div>
+            <div class="amz-deal-title">Arctic Hunter Water Resistant Laptop Backpack with Lock</div>
+          </div>
+
+          <div class="amz-deal-card">
+            <div class="amz-deal-img-box">
+              <img src="images/prod-sony-xm5.svg" alt="Sony Headphones">
+            </div>
+            <div class="amz-deal-badge-row">
+              <span class="amz-discount-pill">23% off</span>
+              <span class="amz-deal-type">Prime Exclusive</span>
+            </div>
+            <div class="amz-deal-price">
+              ₹26,990 <span class="amz-deal-mrp">₹34,990</span>
+            </div>
+            <div class="amz-deal-title">Sony WH-1000XM5 Noise Canceling Wireless Headphones</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ------------------------------------------------------------------
+         OFFERS & BANK PROMO BANNER SECTION
+         ------------------------------------------------------------------ -->
+    <section class="amz-promo-banner-container" aria-label="Bank Promotions &amp; Discounts">
+      <div class="amz-promo-banner">
+        <img src="images/promo-bank.svg" alt="10% Instant Discount on HDFC &amp; ICICI Bank Cards">
+      </div>
+    </section>
+
+    <!-- ------------------------------------------------------------------
+         FEATURED PRODUCTS CATALOG SECTION (Dynamic CSS Grid & JS Filters)
+         ------------------------------------------------------------------ -->
+    <section class="amz-section-container" id="featuredProductsSection" aria-label="Featured Products Grid">
+      <div class="amz-white-panel">
+        <div class="amz-panel-header">
+          <div>
+            <h3 class="amz-panel-title mb-1">Featured Products &amp; Best Picks</h3>
+            <p class="text-muted small mb-0">Handpicked items with fast Prime delivery &amp; verified buyer ratings</p>
+          </div>
+
+          <!-- Interactive Filter Tabs -->
+          <div class="amz-filter-tabs" role="tablist">
+            <button class="amz-filter-btn active" data-category="all">All Products</button>
+            <button class="amz-filter-btn" data-category="electronics">Electronics</button>
+            <button class="amz-filter-btn" data-category="home">Home &amp; Kitchen</button>
+            <button class="amz-filter-btn" data-category="fashion">Fashion</button>
+            <button class="amz-filter-btn" data-category="deals">🔥 Top Deals</button>
+          </div>
+        </div>
+
+        <!-- Products Responsive CSS Grid (Rendered via JS) -->
+        <div class="amz-products-grid" id="productsGrid">
+          <!-- Populated dynamically by js/main.js -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======================================================================
+       3. SEMANTIC FOOTER: Directory Links, Country Selection & Copyright
+       ====================================================================== -->
+  <footer class="amz-footer">
+    <!-- Back to top button -->
+    <div class="amz-back-to-top" id="backToTopBtn" role="button" aria-label="Scroll back to top">
+      Back to top
+    </div>
+
+    <!-- 4-Column Directory Links (CSS Grid) -->
+    <div class="amz-footer-links-container">
+      <div class="amz-footer-col">
+        <h6>Get to Know Us</h6>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press Releases</a></li>
+          <li><a href="#">Amazon Science</a></li>
+        </ul>
+      </div>
+
+      <div class="amz-footer-col">
+        <h6>Connect with Us</h6>
+        <ul>
+          <li><a href="https://www.facebook.com" target="_blank" rel="noopener"><i class="bi bi-facebook me-1"></i> Facebook</a></li>
+          <li><a href="https://www.twitter.com" target="_blank" rel="noopener"><i class="bi bi-twitter-x me-1"></i> Twitter</a></li>
+          <li><a href="https://www.instagram.com" target="_blank" rel="noopener"><i class="bi bi-instagram me-1"></i> Instagram</a></li>
+        </ul>
+      </div>
+
+      <div class="amz-footer-col">
+        <h6>Make Money with Us</h6>
+        <ul>
+          <li><a href="#">Sell on Amazon</a></li>
+          <li><a href="#">Sell under Amazon Accelerator</a></li>
+          <li><a href="#">Protect and Build Your Brand</a></li>
+          <li><a href="#">Amazon Global Selling</a></li>
+          <li><a href="#">Become an Affiliate</a></li>
+          <li><a href="#">Fulfilment by Amazon</a></li>
+        </ul>
+      </div>
+
+      <div class="amz-footer-col">
+        <h6>Let Us Help You</h6>
+        <ul>
+          <li><a href="#">COVID-19 and Amazon</a></li>
+          <li><a href="#">Your Account</a></li>
+          <li><a href="#">Returns Centre</a></li>
+          <li><a href="#">100% Purchase Protection</a></li>
+          <li><a href="#">Amazon App Download</a></li>
+          <li><a href="#">Help</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Middle Divider with Logo and Country Selector -->
+    <div class="amz-footer-middle">
+      <img src="images/amazon-logo.svg" alt="Amazon Logo" height="28">
+      <button class="amz-footer-btn" type="button"><i class="bi bi-globe"></i> English</button>
+      <button class="amz-footer-btn" type="button">🇮🇳 India</button>
+    </div>
+
+    <!-- Bottom Copyright & Legal Links -->
+    <div class="amz-footer-bottom">
+      <div class="amz-footer-bottom-links">
+        <a href="#">Conditions of Use &amp; Sale</a>
+        <a href="#">Privacy Notice</a>
+        <a href="#">Interest-Based Ads</a>
+      </div>
+      <p class="mb-0">© 1996-2026, Amazon.com, Inc. or its affiliates. Built for Academic Practical Assessment (Web Technology 2304362L).</p>
+    </div>
+  </footer>
+
+  <!-- ======================================================================
+       4. BOOTSTRAP OFFCANVAS & MODAL COMPONENTS
+       ====================================================================== -->
+
+  <!-- Cart Offcanvas Drawer -->
+  <aside class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas" aria-labelledby="cartOffcanvasLabel">
+    <div class="offcanvas-header border-bottom">
+      <h5 class="offcanvas-title fw-bold" id="cartOffcanvasLabel"><i class="bi bi-cart3 me-2"></i> Shopping Cart</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column justify-content-between">
+      <div id="cartDrawerItems">
+        <!-- Rendered by js/main.js -->
+      </div>
+      <div class="border-top pt-3 mt-3">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <span class="fs-5 fw-bold">Subtotal:</span>
+          <span class="fs-4 fw-bold text-danger" id="cartSubtotal">₹0</span>
+        </div>
+        <button class="btn btn-warning w-100 py-2 fw-bold" onclick="openCheckoutModal()">
+          Proceed to Buy
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Checkout Mockup Modal -->
+  <div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-dark text-white">
+          <h5 class="modal-title fw-bold" id="checkoutModalLabel"><i class="bi bi-shield-lock-fill text-warning me-2"></i> Amazon Checkout</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4" id="checkoutModalBody">
+          <!-- Rendered dynamically by js/main.js -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- "All" Hamburger Navigation Offcanvas Menu -->
+  <aside class="offcanvas offcanvas-start" tabindex="-1" id="allMenuOffcanvas" aria-labelledby="allMenuLabel">
+    <div class="offcanvas-header bg-dark text-white">
+      <h5 class="offcanvas-title fw-bold" id="allMenuLabel"><i class="bi bi-person-circle me-2"></i> Hello, Sign in</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body p-0">
+      <div class="list-group list-group-flush">
+        <div class="list-group-item bg-light fw-bold text-uppercase small text-muted">Trending</div>
+        <a href="#featuredProductsSection" class="list-group-item list-group-item-action" data-bs-dismiss="offcanvas">Best Sellers</a>
+        <a href="#featuredProductsSection" class="list-group-item list-group-item-action" data-bs-dismiss="offcanvas">New Releases</a>
+        <a href="#todaysDealsSection" class="list-group-item list-group-item-action" data-bs-dismiss="offcanvas">Movers and Shakers</a>
+
+        <div class="list-group-item bg-light fw-bold text-uppercase small text-muted">Digital Content &amp; Devices</div>
+        <a href="#" class="list-group-item list-group-item-action">Echo &amp; Alexa</a>
+        <a href="#" class="list-group-item list-group-item-action">Fire TV</a>
+        <a href="#" class="list-group-item list-group-item-action">Kindle E-readers</a>
+        <a href="#" class="list-group-item list-group-item-action">Audible Audiobooks</a>
+
+        <div class="list-group-item bg-light fw-bold text-uppercase small text-muted">Shop by Category</div>
+        <a href="#featuredProductsSection" class="list-group-item list-group-item-action" data-bs-dismiss="offcanvas">Mobiles, Computers</a>
+        <a href="#featuredProductsSection" class="list-group-item list-group-item-action" data-bs-dismiss="offcanvas">TV, Appliances, Electronics</a>
+        <a href="#featuredProductsSection" class="list-group-item list-group-item-action" data-bs-dismiss="offcanvas">Men's &amp; Women's Fashion</a>
+        <a href="#featuredProductsSection" class="list-group-item list-group-item-action" data-bs-dismiss="offcanvas">Home, Kitchen, Pets</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Quick View Modal -->
+  <div class="modal fade" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header border-0 pb-0">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4" id="quickViewModalBody">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sign In / Account Modal -->
+  <div class="modal fade" id="accountModal" tabindex="-1" aria-labelledby="accountModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header border-bottom">
+          <h5 class="modal-title fw-bold" id="accountModalLabel">Your Account</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4 text-center">
+          <img src="images/amazon-logo.svg" alt="Amazon" height="32" class="mb-3 filter-invert">
+          <h6 class="fw-bold mb-3">Sign in for the best experience</h6>
+          <form onsubmit="event.preventDefault(); alert('Sign-in simulation successful!'); bootstrap.Modal.getInstance(document.getElementById('accountModal')).hide();">
+            <div class="mb-3 text-start">
+              <label for="loginEmail" class="form-label small fw-bold">Email or mobile phone number</label>
+              <input type="text" class="form-control" id="loginEmail" placeholder="Enter email or phone" required>
+            </div>
+            <button type="submit" class="btn btn-warning w-100 fw-bold py-2 mb-3">Continue</button>
+          </form>
+          <p class="small text-muted mb-0">By continuing, you agree to Amazon's Conditions of Use and Privacy Notice.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Prime Modal -->
+  <div class="modal fade" id="primeModal" tabindex="-1" aria-labelledby="primeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title fw-bold" id="primeModalLabel"><i class="bi bi-patch-check-fill me-2"></i> Amazon Prime Benefits</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <ul class="list-unstyled mb-4">
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> <strong>FREE One-Day &amp; Two-Day Delivery</strong> on eligible items</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> <strong>Prime Video:</strong> Unlimited streaming of blockbuster movies &amp; shows</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> <strong>Prime Music:</strong> Ad-free access to 100 million songs</li>
+            <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> <strong>Exclusive 30-minute early access</strong> to Lightning Deals</li>
+          </ul>
+          <button class="btn btn-warning w-100 fw-bold py-2" data-bs-dismiss="modal">Join Prime at ₹1,499/year</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container for "Add to Cart" -->
+  <div class="toast-container amz-toast">
+    <div id="cartToast" class="toast align-items-center text-bg-dark border-0" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body d-flex align-items-center gap-2">
+          <i class="bi bi-check-circle-fill text-success fs-5"></i>
+          <span id="toastMessage">Added to Cart!</span>
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Local Bootstrap 5 Bundle JS (100% Offline Compatible) -->
+  <script src="js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom App JavaScript -->
+  <script src="js/main.js"></script>
+</body>
+</html>

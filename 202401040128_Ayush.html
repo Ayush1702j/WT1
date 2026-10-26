@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Practical 1 Report - Web Technology (2304362L)</title>
+  <style>
+    .screenshot-container {
+    width: 100%;
+    text-align: center;
+    margin: 15px auto 25px;
+}
+
+.report-screenshot {
+    display: block;
+    width: 65%;
+    max-width: 550px;
+    height: auto;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    object-fit: contain;
+}
+
+@media print {
+    .report-screenshot {
+        width: 65%;
+        max-width: 550px;
+        height: auto;
+    }
+}
+    @page {
+      size: A4;
+      margin: 18mm 16mm 18mm 16mm;
+    }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #222;
+      line-height: 1.5;
+      font-size: 11pt;
+      background: #fdfdfd;
+      margin: 0;
+      padding: 20px;
+    }
+    .report-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 30px;
+      border: 1px solid #e0e0e0;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+    .header-block {
+      text-align: center;
+      border-bottom: 2px solid #131921;
+      padding-bottom: 15px;
+      margin-bottom: 25px;
+    }
+    .header-block h3 {
+      margin: 0 0 5px 0;
+      font-size: 15pt;
+      color: #0f1111;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .header-block h4 {
+      margin: 0 0 5px 0;
+      font-size: 12pt;
+      color: #555;
+      font-weight: 600;
+    }
+    .header-block h2 {
+      margin: 12px 0 0 0;
+      font-size: 16pt;
+      color: #b12704;
+      font-weight: 800;
+    }
+    .meta-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 25px;
+      font-size: 10pt;
+    }
+    .meta-table td {
+      padding: 8px 12px;
+      border: 1px solid #d5d9d9;
+    }
+    .meta-table td.label {
+      background: #f7fafa;
+      font-weight: bold;
+      width: 25%;
+      color: #333;
+    }
+    h2.section-title {
+      font-size: 13pt;
+      color: #131921;
+      border-left: 4px solid #febd69;
+      padding-left: 10px;
+      margin-top: 25px;
+      margin-bottom: 12px;
+    }
+    h3.sub-title {
+      font-size: 11pt;
+      color: #232f3e;
+      margin-top: 15px;
+      margin-bottom: 8px;
+    }
+    p, li {
+      font-size: 10.5pt;
+      color: #333;
+    }
+    ul, ol {
+      margin: 6px 0 12px 20px;
+    }
+    pre {
+      background: #f4f6f8;
+      border: 1px solid #e1e4e8;
+      border-radius: 4px;
+      padding: 10px 14px;
+      font-family: Consolas, 'Courier New', monospace;
+      font-size: 9pt;
+      overflow-x: auto;
+      line-height: 1.4;
+      color: #24292e;
+    }
+    code {
+      font-family: Consolas, monospace;
+      font-size: 9.5pt;
+      background: #f1f3f5;
+      padding: 2px 5px;
+      border-radius: 3px;
+      color: #b12704;
+    }
+    table.data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+      font-size: 9.5pt;
+    }
+    table.data-table th, table.data-table td {
+      border: 1px solid #cbd5e1;
+      padding: 8px 10px;
+      text-align: left;
+    }
+    table.data-table th {
+      background: #f1f5f9;
+      color: #0f172a;
+      font-weight: bold;
+    }
+    .screenshot-placeholder {
+      border: 2px dashed #94a3b8;
+      background: #f8fafc;
+      border-radius: 6px;
+      padding: 30px 15px;
+      text-align: center;
+      color: #64748b;
+      margin: 15px 0;
+      font-weight: 500;
+      font-size: 10pt;
+    }
+    .badge-pass {
+      background: #dcfce7;
+      color: #15803d;
+      font-weight: bold;
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+    .page-break {
+      page-break-before: always;
+    }
+    @media print {
+      body {
+        background: transparent;
+        padding: 0;
+      }
+      .report-container {
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        max-width: 100%;
+      }
+      .no-print {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="no-print" style="text-align: center; margin-bottom: 20px;">
+    <button onclick="window.print()" style="background: #febd69; border: 1px solid #f3a847; padding: 10px 24px; font-weight: bold; cursor: pointer; border-radius: 4px; font-size: 14px;">
+      🖨️ Print / Save as PDF (Ctrl + P)
+    </button>
+  </div>
+
+  <div class="report-container">
+    <!-- Header Block -->
+    <div class="header-block">
+      <h3>MIT Academy of Engineering</h3>
+      <h4>School of Computer Engineering</h4>
+      <p style="margin: 0; font-size: 10pt; color: #666;">WEB TECHNOLOGY (2304362L) | T.Y. B.Tech |</p>
+      <h2>Practical No. 1: Responsive Single-Page E-Commerce Front Page (Amazon.in style)</h2>
+    </div>
+
+    <!-- Student & Meta Table -->
+    <table class="meta-table">
+      <tr>
+        <td class="label">Student Name</td>
+        <td>Ayush H Jugseniye</td>
+        <td class="label">PRN / Roll No.</td>
+        <td>202401040128</td>
+      </tr>
+      <tr>
+        <td class="label">Division / Batch</td>
+        <td>T.Y. B.Tech Computer Engineering (Batch WT1)</td>
+        <td class="label">Course Outcome</td>
+        <td>CO1: HTML, CSS and Frameworks (Bootstrap)</td>
+      </tr>
+      <tr>
+        <td class="label">Lab Hours</td>
+        <td>10 Hours</td>
+        <td class="label">Server Environment</td>
+        <td>Apache Tomcat 10.0.23 (Port 8081)</td>
+      </tr>
+    </table>
+
+    <!-- 1. Aim & Problem Statement -->
+    <h2 class="section-title">1. Aim and Problem Statement</h2>
+    <h3 class="sub-title">1.1 Aim</h3>
+    <p>
+      To design and develop a single-page responsive e-commerce web application inspired by <strong>Amazon.in</strong> using HTML5 semantic tags, modern CSS3 (Flexbox, CSS Grid, media queries), and Bootstrap 5 components, and deploy the application within the <code>webapps</code> directory of an Apache Tomcat servlet container.
+    </p>
+
+    <h3 class="sub-title">1.2 Problem Statement</h3>
+    <p>
+      Modern e-commerce platforms must provide an intuitive, high-performance, and responsive user interface across desktops, tablets, and mobile smartphones. The objective is to implement:
+    </p>
+    <ul>
+      <li><strong>Semantic Structure:</strong> Header with location and search bar, sub-nav categories, hero promotional carousel, 4-grid category cards, deals flexbox scroller, and 4-column footer.</li>
+      <li><strong>Styling &amp; Responsiveness:</strong> CSS Custom Properties, Flexbox for 1D alignments, CSS Grid for 2D catalog layouts, and fluid media queries across mobile (&lt;576px), tablet (576px–991px), and desktop (&gt;992px).</li>
+      <li><strong>Dynamic Single-Page Features:</strong> Dynamic cart state with badge counter, slide-in offcanvas cart drawer, live debounced search filter, category filter pills, quick-view modal, and toast alerts.</li>
+      <li><strong>Tomcat Deployment:</strong> Full deployment inside Apache Tomcat 10 and resolving local port binding conflicts.</li>
+    </ul>
+
+    <!-- 2. System Architecture -->
+    <h2 class="section-title">2. Architecture &amp; Component Design</h2>
+    <pre>
++-----------------------------------------------------------------------------------------+
+|                                  Header (.amz-header)                                   |
+| [Amazon Logo] | [Deliver to: Pune] | [Search Input + Dropdown] | [Accounts] | [Cart (2)]|
+| [All Menu] | miniTV | Sell | Best Sellers | Mobiles | Today's Deals | Electronics | ...  |
++-----------------------------------------------------------------------------------------+
+                                             |
+                                             v
++-----------------------------------------------------------------------------------------+
+|                                       Main Content                                      |
+|  1. Hero Carousel: Auto-sliding banners with Amazon gradient blend to gray background   |
+|  2. Category 4-Grid Cards: Overlapping cards (-240px margin) with 2x2 product tiles    |
+|  3. Today's Deals Scroller: Live countdown timer + horizontal flexbox product cards     |
+|  4. Offers &amp; Bank Banner: 10% instant card discount promotional banner                 |
+|  5. Featured Products Catalog: CSS Grid (repeat(auto-fill, minmax(280px, 1fr)))         |
++-----------------------------------------------------------------------------------------+
+                                             |
+                                             v
++-----------------------------------------------------------------------------------------+
+|                                    Footer (.amz-footer)                                 |
+|  [Back to Top] | [4-Column Directory Links] | [Country Selector] | [Copyright &amp; Terms]  |
++-----------------------------------------------------------------------------------------+
+    </pre>
+
+    <div class="page-break"></div>
+
+    <!-- 3. Key Implementation Details -->
+    <h2 class="section-title">3. Key Implementation &amp; Code Explained</h2>
+
+    <h3 class="sub-title">3.1 Semantic HTML5 Header &amp; Search Group</h3>
+    <pre>&lt;!-- Semantic Header with Accessible Search Navigation --&gt;
+&lt;header class="amz-header" id="topHeader"&gt;
+  &lt;nav class="amz-navbar-top" aria-label="Main Navigation"&gt;
+    &lt;a href="index.html" class="amz-nav-box amz-logo-box"&gt;
+      &lt;img src="images/amazon-logo.svg" alt="Amazon.in Logo" class="amz-logo"&gt;
+    &lt;/a&gt;
+    &lt;form class="amz-search-container" role="search" onsubmit="event.preventDefault();"&gt;
+      &lt;select class="amz-search-category" id="amzSearchCategory"&gt;
+        &lt;option value="all"&gt;All&lt;/option&gt;
+        &lt;option value="electronics"&gt;Electronics&lt;/option&gt;
+        &lt;option value="fashion"&gt;Fashion&lt;/option&gt;
+        &lt;option value="home"&gt;Home &amp; Kitchen&lt;/option&gt;
+      &lt;/select&gt;
+      &lt;input type="text" class="amz-search-input" id="amzSearchInput" placeholder="Search Amazon.in"&gt;
+      &lt;button type="submit" class="amz-search-btn" id="amzSearchBtn"&gt;&lt;i class="bi bi-search"&gt;&lt;/i&gt;&lt;/button&gt;
+    &lt;/form&gt;
+    &lt;a href="#cartOffcanvas" class="amz-nav-box amz-cart-box" data-bs-toggle="offcanvas"&gt;
+      &lt;div class="amz-cart-icon-wrapper"&gt;
+        &lt;i class="bi bi-cart3"&gt;&lt;/i&gt;
+        &lt;span class="amz-cart-count" id="cartCountBadge"&gt;2&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;span class="amz-cart-label d-none d-sm-inline"&gt;Cart&lt;/span&gt;
+    &lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;</pre>
+
+    <h3 class="sub-title">3.2 CSS Grid &amp; Hero Gradient Overlay</h3>
+    <pre>/* Amazon signature gradient mask to blend carousel into body */
+.amz-hero-gradient-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 250px;
+  background: linear-gradient(to bottom, rgba(227,230,230,0) 0%, rgba(227,230,230,0.95) 75%, #e3e6e6 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Category Cards Overlap and 2x2 internal CSS Grid */
+.amz-category-grid-section {
+  position: relative;
+  z-index: 3;
+  margin-top: -240px; /* Overlaps bottom of hero carousel */
+}
+.amz-card-2x2-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+/* Responsive Auto-Fill Products Grid */
+.amz-products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}</pre>
+
+    <h3 class="sub-title">3.3 Responsive Media Queries</h3>
+    <pre>/* Mobile View (< 576px) */
+@media (max-width: 575.98px) {
+  .amz-location-box, .amz-account-box, .amz-orders-box { display: none; }
+  .amz-search-container { order: 3; width: 100%; margin-top: 4px; }
+  .carousel-item img { height: 220px; }
+  .amz-category-grid-section { margin-top: -60px; }
+  .amz-products-grid { grid-template-columns: 1fr; }
+  .amz-footer-links-container { grid-template-columns: 1fr; }
+}
+
+/* Tablet View (576px - 991px) */
+@media (min-width: 576px) and (max-width: 991.98px) {
+  .carousel-item img { height: 340px; }
+  .amz-category-grid-section { margin-top: -140px; }
+  .amz-products-grid { grid-template-columns: repeat(2, 1fr); }
+  .amz-footer-links-container { grid-template-columns: repeat(2, 1fr); }
+}</pre>
+
+    <!-- 4. Apache Tomcat Deployment -->
+    <h2 class="section-title">4. Apache Tomcat Deployment Process</h2>
+    <ol>
+      <li><strong>Directory Deployment:</strong> Deployed source files (<code>index.html</code>, <code>css/</code>, <code>js/</code>, <code>images/</code>) to <code>apache-tomcat-10.0.23/webapps/amazon/</code>.</li>
+      <li><strong>Runtime Configuration (<code>bin/setenv.bat</code>):</strong> Bound Java JDK 21 LTS:
+        <pre>set "JAVA_HOME=C:\Program Files\Java\jdk-21"
+set "JRE_HOME=C:\Program Files\Java\jdk-21"
+set "CATALINA_HOME=C:\Users\ayush\apache-tomcat-10.0.23"</pre>
+      </li>
+      <li><strong>Port Conflict Resolution:</strong> Standard port 8080 was in use by Oracle XE XML listener (<code>TNSLSNR / DAV</code>). Configured Tomcat's HTTP Connector to port <strong>8081</strong> inside <code>conf/server.xml</code>.</li>
+      <li><strong>Execution &amp; Verification:</strong> Started server using <code>catalina.bat run</code>. Application served live at:
+        <br><strong><code>http://localhost:8081/amazon/</code></strong>
+      </li>
+    </ol>
+
+    <div class="page-break"></div>
+
+    <!-- 5. Test Cases Table -->
+    <h2 class="section-title">5. Testing and Test Cases</h2>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Test ID</th>
+          <th>Test Case</th>
+          <th>Input / Action</th>
+          <th>Expected Outcome</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>TC-01</td>
+          <td>Desktop Layout (1440px)</td>
+          <td>Open URL on desktop</td>
+          <td>Full nav, 3-slide carousel, 4-grid category overlap, 4-col products</td>
+          <td><span class="badge-pass">PASS</span></td>
+        </tr>
+        <tr>
+          <td>TC-02</td>
+          <td>Tablet Layout (768px)</td>
+          <td>Resize viewport to 768px</td>
+          <td>Location hidden, category cards reflow to 2 columns</td>
+          <td><span class="badge-pass">PASS</span></td>
+        </tr>
+        <tr>
+          <td>TC-03</td>
+          <td>Mobile Layout (375px)</td>
+          <td>Resize viewport to 375px</td>
+          <td>Search input wraps to full width, single-column product catalog</td>
+          <td><span class="badge-pass">PASS</span></td>
+        </tr>
+        <tr>
+          <td>TC-04</td>
+          <td>Live Search Filtering</td>
+          <td>Type "MacBook"</td>
+          <td>Catalog filters dynamically to show matching Apple MacBook Air</td>
+          <td><span class="badge-pass">PASS</span></td>
+        </tr>
+        <tr>
+          <td>TC-05</td>
+          <td>Category Filter Pill</td>
+          <td>Click "🔥 Top Deals"</td>
+          <td>Filters catalog items to only show products with &gt;=30% discount</td>
+          <td><span class="badge-pass">PASS</span></td>
+        </tr>
+        <tr>
+          <td>TC-06</td>
+          <td>Add to Cart &amp; Drawer</td>
+          <td>Click "Add to Cart"</td>
+          <td>Cart badge increments, toast pops up, subtotal recalculated</td>
+          <td><span class="badge-pass">PASS</span></td>
+        </tr>
+        <tr>
+          <td>TC-07</td>
+          <td>Invalid Search Query</td>
+          <td>Search "xyzunknown"</td>
+          <td>Graceful "No products found" message displayed</td>
+          <td><span class="badge-pass">PASS</span></td>
+        </tr>
+        <tr>
+          <td>TC-08</td>
+          <td>Tomcat Static Delivery</td>
+          <td>Fetch static assets</td>
+          <td>HTTP Status 200 OK for HTML, CSS, JS, and all 33 SVG images</td>
+          <td><span class="badge-pass">PASS</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- 6. Labelled Output Screenshots -->
+    <h2 class="section-title">6. Output Screenshots</h2>
+
+    <p><strong>Screenshot 1: Page Running from Apache Tomcat (URL: http://localhost:8081/amazon/ Visible)</strong></p>
+    <div class="">
+      <img src="screenshots/Image1.png"
+         alt="Page running from Apache Tomcat"
+         class="report-screenshot">
+    </div>
+
+    <p><strong>Screenshot 2: Desktop View </strong></p>
+    <div class="">
+      <img src="screenshots/Image2.png"
+         alt="Page running from Apache Tomcat"
+         class="report-screenshot">
+    </div>
+
+    <!-- <p><strong>Screenshot 3: Tablet Width View (768px Breakpoint)</strong></p>
+    <div class="screenshot-placeholder">
+      [ Attach Tablet View Screenshot showing 2-column reflow in Chrome DevTools ]
+    </div>
+
+    <p><strong>Screenshot 4: Mobile Width View (375px Breakpoint) with Shopping Cart Offcanvas</strong></p>
+    <div class="screenshot-placeholder">
+      [ Attach Mobile View Screenshot showing wrapped search bar &amp; open Cart Drawer with subtotal ]
+    </div> -->
+
+    <div class="page-break"></div>
+
+    <!-- 7. Conclusion & Learnings -->
+    <h2 class="section-title">7. Conclusion &amp; Learnings</h2>
+    <h3 class="sub-title">7.1 What Works</h3>
+    <ul>
+      <li>High visual fidelity reproducing Amazon.in’s look, feel, typography, and color palette.</li>
+      <li>33 self-contained, lightweight vector SVG assets in <code>images/</code> ensuring 100% offline functionality.</li>
+      <li>Responsive layout tested across desktop, tablet, and mobile devices without horizontal overflow.</li>
+      <li>Dynamic client-side features: Shopping cart state, live search, category filtering, quick-view modal, countdown timer.</li>
+      <li>Successfully deployed and served from Apache Tomcat 10.0.23 webapps directory.</li>
+    </ul>
+
+    <h3 class="sub-title">7.2 Limitations</h3>
+    <ul>
+      <li>Client-side cart state resets on page refresh; requires backend database/session storage for persistent user sessions.</li>
+      <li>Payment gateway triggers a checkout simulation rather than live banking transaction APIs.</li>
+    </ul>
+
+    <h3 class="sub-title">7.3 What I Learned</h3>
+    <ul>
+      <li>How to integrate CSS Grid for 2D spatial layouts with Flexbox for 1D inline alignment.</li>
+      <li>How to customize and extend Bootstrap 5 components (Carousel, Offcanvas, Modal, Toast) with custom CSS variables.</li>
+      <li>Practical server administration: configuring Apache Tomcat, handling environment variables (<code>JAVA_HOME</code>, <code>CATALINA_HOME</code>), and resolving port collisions (Oracle XE port 8080 coexistence).</li>
+    </ul>
+
+    <!-- 8. AI Use Declaration -->
+    <h2 class="section-title">8. AI Use Declaration</h2>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>Declaration Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-weight: bold; width: 30%;">AI tool and prompt used</td>
+          <td><strong>Antigravity AI (Gemini 3.8)</strong><br><em>Prompt:</em> "Design and develop a single-page responsive website (Amazon.in style) using HTML5, CSS3, Bootstrap 5 and deploy it to Apache Tomcat."</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">One output you checked and how</td>
+          <td>Checked the multi-device responsive reflow at 1440px (Desktop), 768px (Tablet), and 375px (Mobile) using Chrome DevTools device mode, verifying CSS Grid columns and Flexbox wrapping.</td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">One thing you corrected or rejected, and why</td>
+          <td>Tomcat failed to start due to port 8080 collision with Oracle XE (<code>TNSLSNR</code>). I configured port <strong>8081</strong> in <code>conf/server.xml</code> and removed an invalid stale <code>&lt;Context&gt;</code> reference from an older Eclipse project.</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+</body>
+</html>

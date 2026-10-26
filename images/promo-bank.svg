@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" width="1200" height="120">
+  <defs>
+    <linearGradient id="bankGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1A365D"/>
+      <stop offset="50%" stop-color="#2B6CB0"/>
+      <stop offset="100%" stop-color="#3182CE"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="120" fill="url(#bankGrad)" rx="10"/>
+  <circle cx="100" cy="60" r="40" fill="#FFF" opacity="0.15"/>
+  <text x="160" y="52" font-family="'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="24" fill="#FEFCBF">10% INSTANT DISCOUNT</text>
+  <text x="160" y="85" font-family="'Segoe UI', Roboto, sans-serif" font-weight="500" font-size="16" fill="#FFFFFF">On HDFC, ICICI &amp; SBI Bank Credit &amp; Debit Cards | Min. purchase ₹5,000</text>
+  <g transform="translate(1020, 38)">
+    <rect width="140" height="44" rx="22" fill="#ECC94B"/>
+    <text x="70" y="27" font-family="'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="15" fill="#1A202C" text-anchor="middle">View Offers</text>
+  </g>
+</svg>

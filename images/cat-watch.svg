@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 180" width="250" height="180">
+  <rect width="250" height="180" fill="#F5F3FF" rx="10"/>
+  <g transform="translate(65, 30)">
+    <circle cx="60" cy="60" r="40" fill="#6D28D9"/><rect x="48" y="10" width="24" height="15" rx="3" fill="#4C1D95"/><rect x="48" y="95" width="24" height="15" rx="3" fill="#4C1D95"/><text x="60" y="68" fill="#DDD6FE" font-size="20" font-weight="bold" text-anchor="middle" font-family="sans-serif">10:45</text>
+  </g>
+</svg>

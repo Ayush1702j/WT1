@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 520" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4C1D95"/>
+      <stop offset="45%" stop-color="#312E81"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+  </defs>
+  <rect width="1400" height="520" fill="url(#bg3)"/>
+  <circle cx="1150" cy="140" r="220" fill="#EC4899" opacity="0.2"/>
+  
+  <rect x="70" y="30" width="230" height="34" rx="17" fill="#EC4899"/>
+  <text x="185" y="52" font-family="'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="14" fill="#FFFFFF" text-anchor="middle" letter-spacing="1">FASHION &amp; LIFESTYLE</text>
+  
+  <text x="70" y="110" font-family="'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="44" fill="#FFFFFF">AUTUMN / WINTER WARDROBE</text>
+  <text x="70" y="160" font-family="'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="44" fill="#F472B6">50% - 80% OFF TOP BRANDS</text>
+  
+  <text x="70" y="200" font-family="'Segoe UI', Roboto, sans-serif" font-weight="500" font-size="17" fill="#E9D5FF">Footwear • Watches • Ethnic Wear • Luggage &amp; Handbags</text>
+  
+  <g transform="translate(70, 218)">
+    <rect width="180" height="36" rx="18" fill="#FBBF24" stroke="#F59E0B" stroke-width="2"/>
+    <text x="90" y="23" font-family="'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="14" fill="#111827" text-anchor="middle">Shop Trends Now</text>
+    <text x="200" y="23" font-family="'Segoe UI', Roboto, sans-serif" font-weight="600" font-size="14" fill="#C084FC">Top Deals from ₹299</text>
+  </g>
+
+  <g transform="translate(980, 30)">
+    <path d="M 50 180 C 70 160 140 160 180 140 C 210 120 240 130 260 160 C 280 180 290 200 240 200 L 60 200 Z" fill="#F43F5E"/>
+    <path d="M 60 200 L 250 200 L 245 215 L 55 215 Z" fill="#FFFFFF"/>
+    <circle cx="130" cy="80" r="38" fill="#1E293B" stroke="#FBBF24" stroke-width="5"/>
+    <rect x="118" y="20" width="24" height="30" fill="#334155"/>
+    <rect x="118" y="112" width="24" height="30" fill="#334155"/>
+    <line x1="130" y1="80" x2="130" y2="60" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+    <line x1="130" y1="80" x2="150" y2="80" stroke="#FBBF24" stroke-width="3" stroke-linecap="round"/>
+  </g>
+</svg>
